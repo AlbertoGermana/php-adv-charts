@@ -1,15 +1,5 @@
 function init(){
-$.ajax({
-  url: 'server.php',
-  method: 'GET',
-  success: function(dataPHP){
-    printLineChartDemo(dataPHP);
-  },
-  error: function(err){
-    console.log('Qualcosa è andato storto',err);
-  }
-})
-  //printLineChartDemo();
+    printLineChartDemo();
 }
 
 function printLineChartDemo(dataServer){
