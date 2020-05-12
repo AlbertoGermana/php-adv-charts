@@ -96,5 +96,7 @@
     <canvas id="{{tipoGrafico}}"></canvas>
     <br>
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.25.3/moment.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.25.3/locale/it.min.js"> </script>
 </body>
 </html>

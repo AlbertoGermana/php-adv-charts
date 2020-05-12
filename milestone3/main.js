@@ -1,9 +1,4 @@
 function init(){
-  // controllo tipo di accesso
-  //
-  // se è clevel{
-  //
-  // }
 
     printLineChartGuest();
     printLineChartEmployee();
@@ -14,18 +9,20 @@ function init(){
 
 function printLineChartGuest(){
   $.ajax({
-    url: 'fatturato.php',
+    url: 'serverData.php'+ window.location.search,
     method: 'GET',
     success: function(dataServer) {
-      //dati del grafico
+
+      // dati del grafico
+
       var ctx = $('#grafico1');
       var myChart = new Chart(ctx, {
-         type: dataServer.type,
+         type: dataServer[0].type,
          data: {
-             labels: dataServer.labels,
+             labels: moment.months(),
              datasets: [{
                  label: 'Vendite',
-                 data: dataServer.data,
+                 data: dataServer[0].data,
                  backgroundColor: [
                    'rgba(150, 33, 146, 0.2)',
                  ],
@@ -60,22 +57,23 @@ function printLineChartGuest(){
     error: function(err){
       console.log("Errore nel grafico del fatturato: ",err);
     }
-  })
+  }
+)
 }
 function printLineChartEmployee(){
   $.ajax({
-    url: 'fatturato_by_agent.php',
+    url: 'serverData.php'+ window.location.search,
     method: 'GET',
     success: function(dataServer) {
       //dati del grafico
       var ctx = $('#grafico2');
       var myChart = new Chart(ctx, {
-         type: dataServer.type,
+         type:  dataServer[0].type,
          data: {
-             labels: dataServer.labels,
+             labels:  dataServer[0].agents,
              datasets: [{
                  label: 'Vendite',
-                 data: dataServer.data,
+                 data:  dataServer[0].sales,
                  backgroundColor: [
                    'rgba(150, 33, 146, 0.2)',
                    'rgba(82, 40, 204, 0.2)',
@@ -110,19 +108,19 @@ function printLineChartEmployee(){
 }
 function printLineChartCLevel(){
   $.ajax({
-    url: 'team_efficiency.php',
+    url: 'serverData.php'+ window.location.search,
     method: 'GET',
     success: function(dataServer) {
       //dati del grafico
-      console.log(dataServer.labels);
+      console.log(dataServer);
       var ctx = $('#grafico3');
       var myChart = new Chart(ctx, {
-         type: dataServer.type,
+         type:  dataServer[0].type,
          data: {
-             labels: dataServer.labels,
+             labels: moment.months(),
              datasets: [{
                label: 'Team1',
-               data: dataServer.data[0],
+               data:  dataServer[0].teamsSales[0],
                backgroundColor: [
                 'rgba(255, 38, 0, 0.2)',
                ],
@@ -143,7 +141,7 @@ function printLineChartCLevel(){
                  borderWidth: 1
              },{
                label: 'Team2',
-               data: dataServer.data[1],
+               data: dataServer[0].teamsSales[1],
                backgroundColor: [
                  'rgba(255, 38, 0, 0.2)',
                ],
@@ -164,7 +162,7 @@ function printLineChartCLevel(){
                  borderWidth: 1
              },{
                label: 'Team3',
-               data: dataServer.data[2],
+               data: dataServer[0].teamsSales[2],
                backgroundColor: [
                  'rgba(255, 38, 0, 0.2)',
                ],
@@ -207,47 +205,3 @@ function printLineChartCLevel(){
 $(document).ready(function(){
   init();
 });
-
-
-
-
-// function printChart(){
-//   $.ajax({
-//     url: "serverData.php",
-//     method: 'GET',
-//     success: function(dataServer) {
-//       console.log(dataServer);
-//       var myChart = new Chart($('#graficoprova'), {
-//          type: dataServer[2].team_efficiency.type,
-//          data: {
-//              labels: dataServer[2].team_efficiency.labels,
-//              datasets:
-//              [{
-//                  label: 'Team1',
-//                  data: dataServer[2].team_efficiency.data[0]
-//                },{
-//                  label: 'Team2',
-//                  data: dataServer[2].team_efficiency.data[1]
-//                },{
-//                  label: 'Team3',
-//                  data: dataServer[2].team_efficiency.data[2]
-//                }]
-//
-//
-//          },
-//          options: {
-//              scales: {
-//                  yAxes: [{
-//                      ticks: {
-//                          beginAtZero: true
-//                      }
-//                  }]
-//              }
-//          }
-//        });
-//     },
-//     error: function(err){
-//       console.error("Errore nel grafico del fatturato: ",err);
-//     }
-//   })
-// }
