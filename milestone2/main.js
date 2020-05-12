@@ -18,7 +18,18 @@ function printLineChartFatturato(){
                  label: 'Vendite',
                  data: dataServer.fatturato.data,
                  backgroundColor: [
-                     'rgba(0, 249, 0, 0.2)',
+                   'rgba(150, 33, 146, 0.2)',
+                   'rgba(82, 40, 204, 0.2)',
+                   'rgba(4, 51, 255, 0.2)',
+                   'rgba(0, 146, 146, 0.2)',
+                   'rgba(0, 249, 0, 0.2)',
+                   'rgba(202, 250, 0, 0.2)',
+                   'rgba(255, 251, 0, 0.2)',
+                   'rgba(255, 199, 0, 0.2)',
+                   'rgba(255, 147, 0, 0.2)',
+                   'rgba(255, 80, 0, 0.2)',
+                   'rgba(255, 38, 0, 0.2)',
+                   'rgba(216, 34, 83, 0.2)'
                  ],
                  borderColor: [
                    'rgba(150, 33, 146, 1)',
