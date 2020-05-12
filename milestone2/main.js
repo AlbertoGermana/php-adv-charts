@@ -13,7 +13,7 @@ function printLineChartFatturato(){
       var myChart = new Chart(ctx, {
          type: dataServer.fatturato.type,
          data: {
-             labels: ['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno','Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'],
+             labels: moment.months(),
              datasets: [{
                  label: 'Vendite',
                  data: dataServer.fatturato.data,
