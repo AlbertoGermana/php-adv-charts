@@ -1,4 +1,12 @@
 function init(){
+  chooseChartToPrint();
+}
+
+function chooseChartToPrint(){
+  if (window.location.search==""){
+    $('.grafici').hide();
+    $('#noAccess').show();
+  }
   if (window.location.search==="?access=guest"){
     printLineChartGuest();
     $('.grafici').hide();
@@ -16,18 +24,13 @@ function init(){
     printLineChartEmployee();
     printLineChartCLevel();
   }
-
-    // printChart()
-}
-
-
+};
 
 function printLineChartGuest(){
   $.ajax({
     url: 'serverData.php'+ window.location.search,
     method: 'GET',
     success: function(dataServer) {
-      console.log(dataServer);
       // dati del grafico
 
       var ctx = $('#grafico1');
@@ -214,27 +217,6 @@ function printLineChartCLevel(){
     }
   })
 }
-
-// function printChart(){
-//   //raccolgo il tipo di accesso
-//   var access = $('#access').val();
-//   $.ajax({
-//       url: 'serverData.php',
-//       data: {accessType: access},
-//       success: function(data){
-//         var x = 0;
-//           for (var graph of data) {
-//             x += 1;
-//             printChart($("#grafico"+ x),
-//
-//             );
-//           }
-//       },
-//       error: function(err){
-//         console.error(err);
-//       }
-//   })
-// }
 
 $(document).ready(function(){
   init();
