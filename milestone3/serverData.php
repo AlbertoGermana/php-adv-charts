@@ -4,6 +4,7 @@
 
   //creazione dati primo grafico
   $graphGuest = $graphs['fatturato'];
+  $graphGuest += ['livello' => 1];
 
   //crezione dati secondo grafico
   $graphByAgent = $graphs['fatturato_by_agent'];
@@ -14,40 +15,44 @@
     $nameAgents[] = $agenti;
     $venditeAgents[] = $vendite;
   };
-  $graphByAgent['agents'] = $nameAgents;
-  $graphByAgent['sales'] = $venditeAgents;
-
+  $graphByAgent['labels'] = $nameAgents;
+  $graphByAgent['data'] = $venditeAgents;
+  $graphByAgent += ['livello' => 2];
 
   //creazione dati terzo grafico
-$team_efficiency = $graphs['team_efficiency'];
+  $team_efficiency = $graphs['team_efficiency'];
   $nameTeam = [];
   $venditeTeam = [];
   foreach ($team_efficiency['data'] as $agenti => $vendite) {
     $nameTeam[] = $agenti;
     $venditeTeam[] = $vendite;
   };
-  $team_efficiency['teams'] = $nameTeam;
-  $team_efficiency['teamsSales'] = $venditeTeam;
-
+  $team_efficiency['labels'] = $nameTeam;
+  $team_efficiency['data'] = $venditeTeam;
+  $team_efficiency += ['livello' => 3];
   //creo array finale
-$array = [];
+  $array = [];
   $array = [
     'grafico1' => $graphGuest,
     'grafico2' => $graphByAgent,
     'grafico3' => $team_efficiency];
 
-$arrayFinito = [];
+  $arrayFinito = [];
 
-$inputInserito = $_GET['access'];
+  $inputInserito = $_GET['access'];
 
-foreach ($array as $grafici => $value) {
-  if($inputInserito == $value['access']){
-    $arrayFinito[] = $value;
+  if($inputInserito == 'clevel'){
+    $arrayFinito[] = $array['grafico1'];
+    $arrayFinito[] = $array['grafico2'];
+    $arrayFinito[] = $array['grafico3'];
   }
-// if($_GET['access'] == 'guest'){
-//   $arrayFinito[] = $graphGuest;
-// }
+  if($inputInserito == 'employee'){
+    $arrayFinito[] = $array['grafico1'];
+    $arrayFinito[] = $array['grafico2'];
+  }
+  if($inputInserito == 'guest' ){
+    $arrayFinito[] = $array['grafico1'];
+  }
 
-}
   echo json_encode($arrayFinito);
  ?>

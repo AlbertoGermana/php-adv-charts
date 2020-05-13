@@ -52,31 +52,24 @@
           <li><a href="#">link 3</a></li>
           <li><a href="#">link 4</a></li>
         </ul>
-        <h3>Search</h3>
-        <form method="post" action="#" id="search_form">
-          <p>
-            <input class="search" type="text" name="search_field" value="Enter keywords....." />
-          </p>
-        </form>
       </div>
       <div>
-        <input type="hidden" name="" value="<?php echo $inputUtente = $_GET['access']; ?>">
         <!-- insert the page content here -->
         <h1>Statistiche dell'anno 2019</h1>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         <div id="content">
-          <div class="grafico1">
+          <div id="divGrafico1" class="grafici">
             <h2>Grafico</h2>
             <p>Info Grafico</p>
             <canvas id="grafico1"></canvas>
           </div>
-          <div class="grafico2">
+          <div id="divGrafico2" class="grafici">
             <h2>Grafico</h2>
             <p>Info Grafico</p>
             <canvas id="grafico2"></canvas>
           </div>
-          <div class="grafico3">
+          <div id="divGrafico3" class="grafici">
             <h2>Grafico</h2>
             <p>Info Grafico</p>
             <canvas id="grafico3"></canvas>
@@ -90,13 +83,7 @@
       Copyright &copy; colour_orange | <a href="http://validator.w3.org/check?uri=referer">HTML5</a> | <a href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a> | <a href="http://www.html5webtemplates.co.uk">Simple web templates by HTML5</a>
     </footer>
   </div>
-  <script id="graphs-template" type="text/x-handlebars-template">
-    <h2>{{titoloGrafico}}</h2>
-    <p>{{infoGrafico}}</p>
-    <canvas id="{{tipoGrafico}}"></canvas>
-    <br>
-</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.25.3/moment.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.25.3/locale/it.min.js"> </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.25.3/locale/it.min.js"> </script>
 </body>
 </html>
